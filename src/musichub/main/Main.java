@@ -1,5 +1,6 @@
 package musichub.main;
 import musichub.business.*;
+import musichub.client.*;
 import java.util.*;
 
 import java.beans.XMLEncoder;
@@ -11,9 +12,13 @@ public class Main
  	public static void main (String[] args) {
 
 		MusicHub theHub = new MusicHub ();
-		
+
+		System.out.println("Starting MusicHub... Attempting to connect to local server");
+
+		SimpleClient c1 = new SimpleClient();
+		c1.connect("localhost");
+
 		System.out.println("Type h for available commands");
-		
 		
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
@@ -233,6 +238,7 @@ public class Main
 			}
 		}
 		scan.close();
+
 	}
 	
 	private static void printAvailableCommands() {
