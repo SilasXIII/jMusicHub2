@@ -1,7 +1,8 @@
 package musichub.main;
 import musichub.business.*;
-import java.util.*;
+import musichub.audio_player.*;
 
+import java.util.*;
 import java.beans.XMLEncoder;
 import java.io.FileOutputStream;
 import java.io.BufferedOutputStream;
@@ -11,6 +12,7 @@ public class Main
  	public static void main (String[] args) {
 
 		MusicHub theHub = new MusicHub ();
+		Audio player = new Audio();
 		
 		System.out.println("Type h for available commands");
 		
@@ -24,6 +26,12 @@ public class Main
 		
 		while (choice.charAt(0)!= 'q') 	{
 			switch (choice.charAt(0)) 	{
+
+				case 'i':
+					//play musique
+					player.play();
+					choice = scan.nextLine();
+				break;
 				case 'h':
 					printAvailableCommands();
 					choice = scan.nextLine();
@@ -227,6 +235,7 @@ public class Main
 					printAvailableCommands();
 					choice = scan.nextLine();
 				break;
+
 				default:
 				
 				break;
