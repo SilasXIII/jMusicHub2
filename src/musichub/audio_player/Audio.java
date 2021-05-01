@@ -9,7 +9,7 @@ public class Audio{
     public Audio(){}
 
     public void play(String filepath){
-        System.out.println("You can use : p -> play | s -> stop | r -> reset | c -> close | q -> quit");
+        System.out.println("You can use : p -> play | s -> stop | r -> reset | e -> end the music | q -> quit");
         Scanner scan = new Scanner(System.in);
         String choice = scan.nextLine();
         try{
@@ -31,7 +31,7 @@ public class Audio{
                         clip.setMicrosecondPosition(0);
                         choice = scan.nextLine();
                     break;
-                    case("c"):
+                    case("e"):
                         clip.close();
                         choice = scan.nextLine();
                     break;

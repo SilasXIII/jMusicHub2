@@ -19,17 +19,19 @@ public class Main
 		
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
+		String path = "files/local/";
 		
 		String albumTitle = null;
 		
 		if (choice.length() == 0) System.exit(0);						
 		
 		while (choice.charAt(0)!= 'q') 	{
+			System.out.println("Type h for available commands");
 			switch (choice.charAt(0)) 	{
 
 				case 'i':
 					//play musique
-					player.play("src/musichub/audio_player/ps-passion.wav");
+					player.play(path+"mamma_mia.wav");
 					choice = scan.nextLine();
 				break;
 				case 'h':
