@@ -245,6 +245,7 @@ public class Main
 	}
 	
 	private static void printAvailableCommands() {
+		System.out.println("i: to listen music");
 		System.out.println("t: display the album titles, ordered by date");
 		System.out.println("g: display songs of an album, ordered by genre");
 		System.out.println("d: display songs of an album");

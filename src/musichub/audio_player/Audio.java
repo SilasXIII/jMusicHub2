@@ -10,12 +10,38 @@ public class Audio{
 
     public void play(){
         String filepath="src/musichub/audio_player/ps-passion.wav";
+        System.out.println("You can use : p -> play | s -> stop | r -> reset | c -> close | q -> quit");
+        Scanner scan = new Scanner(System.in);
+        String choice = scan.nextLine();
         try{
             File file = new File(filepath);
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
-            clip.start();
+            while(!choice.equals("q")){
+                System.out.println("You can use : p -> play | s -> stop | r -> reset | c -> close | q -> quit");
+                choice = scan.nextLine();
+                switch(choice){
+                    case("p"):
+                        clip.start();
+                        choice = scan.nextLine();
+                    break;
+                    case("s"):
+                        clip.stop();
+                        choice = scan.nextLine();
+                    break;
+                    case("r"):
+                        clip.setMicrosecondPosition(0);
+                        choice = scan.nextLine();
+                    break;
+                    case("c"):
+                        clip.close();
+                        choice = scan.nextLine();
+                    break;
+                    default: System.out.println("You can use : p -> play | s -> stop | r -> reset | c -> close | q -> quit");
+                }
+            }
+
         }catch(Exception ex){
             System.out.println("Error with playing sound");
         }
