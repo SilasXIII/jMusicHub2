@@ -29,7 +29,7 @@ public class Main
 
 				case 'i':
 					//play musique
-					player.play();
+					player.play("src/musichub/audio_player/ps-passion.wav");
 					choice = scan.nextLine();
 				break;
 				case 'h':

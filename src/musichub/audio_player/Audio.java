@@ -8,8 +8,7 @@ public class Audio{
 
     public Audio(){}
 
-    public void play(){
-        String filepath="src/musichub/audio_player/ps-passion.wav";
+    public void play(String filepath){
         System.out.println("You can use : p -> play | s -> stop | r -> reset | c -> close | q -> quit");
         Scanner scan = new Scanner(System.in);
         String choice = scan.nextLine();
@@ -19,8 +18,6 @@ public class Audio{
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             while(!choice.equals("q")){
-                System.out.println("You can use : p -> play | s -> stop | r -> reset | c -> close | q -> quit");
-                choice = scan.nextLine();
                 switch(choice){
                     case("p"):
                         clip.start();
@@ -38,7 +35,7 @@ public class Audio{
                         clip.close();
                         choice = scan.nextLine();
                     break;
-                    default: System.out.println("You can use : p -> play | s -> stop | r -> reset | c -> close | q -> quit");
+                    default:
                 }
             }
 
