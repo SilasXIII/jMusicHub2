@@ -4,10 +4,9 @@ import java.util.*;
 import java.io.*;
 import org.w3c.dom.*;
 import java.text.*;
+import java.io.Serializable;
 
-
-
-public class Album {
+public class Album implements Serializable {
 	private String title;
 	private String artist;
 	private int lengthInSeconds;

@@ -3,8 +3,10 @@ package musichub.business;
 import java.io.*;
 import java.util.*;
 import org.w3c.dom.*;
+import java.io.Serializable;
 
-public abstract class AudioElement {
+
+public abstract class AudioElement implements Serializable {
 	protected String  	title;
 	protected String 	artist;
 	protected int    	lengthInSeconds;
