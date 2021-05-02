@@ -10,9 +10,11 @@ Group :
 mvn compile
 
 ## run
-mvn package then
+mvn package 
+then
 * server : java -jar server\target\server-1.0.0.jar
-* client : run
+* client : cd client
+           run
 
 ## gen doc
 mvn javadoc:javadoc
