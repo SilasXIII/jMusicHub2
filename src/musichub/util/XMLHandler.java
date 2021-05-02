@@ -10,8 +10,6 @@ import org.w3c.dom.*;
 import java.io.IOException;
 import java.io.File;
 
-
-
 public class XMLHandler {
 	TransformerFactory transformerFactory;
 	Transformer transformer;
@@ -74,7 +72,5 @@ public class XMLHandler {
 		}
 		return elementNodes;
 	}
-	
-	
 
 }
