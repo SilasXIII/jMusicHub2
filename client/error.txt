@@ -1,0 +1,9 @@
+java.io.FileNotFoundException: files\local\mamma_mia.wav (Le chemin d’accès spécifié est introuvable)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at com.sun.media.sound.WaveFloatFileReader.getAudioInputStream(WaveFloatFileReader.java:164)
+	at javax.sound.sampled.AudioSystem.getAudioInputStream(AudioSystem.java:1181)
+	at musichub.audio_player.Audio.play(Audio.java:23)
+	at musichub.main.Main.main(Main.java:45)
+Sun May 02 18:15:23 CEST 2021

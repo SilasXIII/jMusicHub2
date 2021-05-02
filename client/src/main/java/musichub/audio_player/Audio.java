@@ -4,18 +4,20 @@ import javax.sound.sampled.*;
 import java.io.*;
 import java.util.*;
 
-/**
- * this class allows playing audio (.wav) files
- * @author Pierre Louis 
- */
 public class Audio{
 
     public Audio(){}
 
-    public void play(String filepath){
+    public void play(String filepath) throws Exception{
         System.out.println("You can use : p -> play | s -> stop | r -> reset | e -> end the music | q -> quit");
+
         Scanner scan = new Scanner(System.in);
         String choice = scan.nextLine();
+
+        File error_file = new File("error.txt");
+        PrintWriter err_handler = new PrintWriter(error_file);
+        Date date = new Date();
+
         try{
             File file = new File(filepath);
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
@@ -45,6 +47,9 @@ public class Audio{
 
         }catch(Exception ex){
             System.out.println("Error with playing sound");
+            ex.printStackTrace(err_handler);
+            err_handler.println(date.toString());
         }
+        err_handler.close();
     }
 }
