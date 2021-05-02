@@ -16,7 +16,11 @@ public class Main
 		System.out.println("Starting MusicHub... Attempting to connect to local server");
 
 		SimpleClient c1 = new SimpleClient();
-		c1.connect("localhost",100,"null");
+		try {
+			c1.connect("localhost",100,"null");
+		} catch(Exception e) {
+			System.out.println("Please boot local server");
+		}
 
 		System.out.println("Type h for available commands");
 		
@@ -127,16 +131,6 @@ public class Main
 
 					c1.connect("localhost",401,songTitle,titleAlbum);
 
-					/*try {
-						theHub.addElementToAlbum(songTitle, titleAlbum);
-					} catch (NoAlbumFoundException ex){
-						System.out.println (ex.getMessage());
-					} catch (NoElementFoundException ex){
-						System.out.println (ex.getMessage());
-					}
-					System.out.println("Song added to the album!");
-					*/
-
 					printAvailableCommands();
                     choice = scan.nextLine();
 					break;
@@ -182,7 +176,7 @@ public class Main
 						System.out.println("Type the name of the audio element you wish to add or 'n' to exit:");
 						String elementTitle = scan.nextLine();
 
-						c1.connect("localhost",510,elementTitle, playListTitle);
+						c1.connect("localhost",510,elementTitle,playListTitle);
                             
 						System.out.println("Type y to add a new one, n to end");
 						choice = scan.nextLine();
@@ -207,11 +201,17 @@ public class Main
 					String plTitle = scan.nextLine();
 
 					c1.connect("localhost",520,plTitle);
-					
+
 					System.out.println("Playlist deleted!");
 					printAvailableCommands();
 					choice = scan.nextLine();
 				break;
+				case 'e':
+					c1.connect("localhost",250,"null");
+
+					printAvailableCommands();
+					choice = scan.nextLine();
+					break;
 				case 's':
 					//save elements, albums, playlists
 					c1.connect("localhost",600,"null");
@@ -233,12 +233,13 @@ public class Main
 		System.out.println("g: display songs of an album, ordered by genre");
 		System.out.println("d: display songs of an album");
 		System.out.println("u: display audiobooks ordered by author");
+		System.out.println("o: display all the playlists");
+		System.out.println("e: display all the audio elements");
 		System.out.println("c: add a new song");
 		System.out.println("a: add a new album");
 		System.out.println("+: add a song to an album");
 		System.out.println("l: add a new audiobook");
 		System.out.println("p: create a new playlist from existing songs and audio books");
-		System.out.println("o: display all the playlists");
 		System.out.println("-: delete an existing playlist");
 		System.out.println("s: save elements, albums, playlists");
 		System.out.println("q: quit program");

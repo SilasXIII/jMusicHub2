@@ -117,10 +117,6 @@ public class MusicHub {
 		return titleList.toString();
 	}
 
-	public String getAllAudioElements() {
-		return getAllSongs() + getAudiobooksTitlesSortedByAuthor();
-	}
-
 	public String getAllPlaylists() {
 		StringBuffer playlistTitleList = new StringBuffer();
 		for (PlayList p : playlists)

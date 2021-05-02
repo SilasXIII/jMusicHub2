@@ -72,7 +72,8 @@ public class ServerThread extends Thread {
 					output.writeObject(theHub.getAllPlaylists());
 					break;
 				case 250:
-					output.writeObject(theHub.getAllAudioElements());
+					output.writeObject(theHub.getAllSongs() + theHub.getAudiobooksTitlesSortedByAuthor());
+					break;
 				case 400:
 					//add a song
 					output.writeObject("obj_req");
@@ -94,6 +95,7 @@ public class ServerThread extends Thread {
 						System.out.println (ex.getMessage());
 					}
 					output.writeObject("Song added to the album!");
+					break;
 				case 410:
 					//add an album
 					output.writeObject("obj_req");
@@ -128,6 +130,7 @@ public class ServerThread extends Thread {
 					} catch (NoElementFoundException ex) {
 						System.out.println (ex.getMessage());
 					}
+					output.writeObject("Element created");
 					break;
 				case 520:
 					//deletus playlistus
