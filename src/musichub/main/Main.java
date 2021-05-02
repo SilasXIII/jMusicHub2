@@ -2,6 +2,7 @@ package musichub.main;
 import musichub.business.*;
 import musichub.audio_player.*;
 
+import java.io.*;
 import java.util.*;
 import java.beans.XMLEncoder;
 import java.io.FileOutputStream;
@@ -9,8 +10,9 @@ import java.io.BufferedOutputStream;
 	
 public class Main
 {
- 	public static void main (String[] args) {
+ 	public static void main (String[] args) throws Exception{
 
+		String filepath = "files/local/";
 		MusicHub theHub = new MusicHub ();
 		Audio player = new Audio();
 		
@@ -19,7 +21,6 @@ public class Main
 		
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
-		String path = "files/local/";
 		
 		String albumTitle = null;
 		
@@ -28,10 +29,9 @@ public class Main
 		while (choice.charAt(0)!= 'q') 	{
 			System.out.println("Type h for available commands");
 			switch (choice.charAt(0)) 	{
-
 				case 'i':
 					//play musique
-					player.play(path+"mamma_mia.wav");
+					player.play(filepath+"mamma_mia.wav");
 					choice = scan.nextLine();
 				break;
 				case 'h':
@@ -247,7 +247,7 @@ public class Main
 	}
 	
 	private static void printAvailableCommands() {
-		System.out.println("i: to listen music");
+		System.out.println("i: to listen to music");
 		System.out.println("t: display the album titles, ordered by date");
 		System.out.println("g: display songs of an album, ordered by genre");
 		System.out.println("d: display songs of an album");

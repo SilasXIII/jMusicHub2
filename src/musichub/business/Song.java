@@ -1,6 +1,8 @@
 package musichub.business;
 
 import org.w3c.dom.*;
+import java.io.*;
+import java.util.*;
 
 
 public class Song extends AudioElement {
@@ -18,11 +20,16 @@ public class Song extends AudioElement {
 	
 	public Song (Element xmlElement) throws Exception {
 		super(xmlElement);
+		File error_file = new File("error.txt");
+		PrintWriter err_handler = new PrintWriter(new FileOutputStream(error_file, true));
+		Date date = new Date();
 		try {
 			this.setGenre(xmlElement.getElementsByTagName("genre").item(0).getTextContent());
 		} catch (Exception ex) {
-			throw ex;
+			ex.printStackTrace(err_handler);
+			err_handler.println(date.toString());
 		}
+		err_handler.close();
 	}
 	
 	public void setGenre (String genre) {	

@@ -1,6 +1,7 @@
 package musichub.business;
 
 import java.io.*;
+import java.util.*;
 import org.w3c.dom.*;
 
 public class AudioBook extends AudioElement {
@@ -20,12 +21,17 @@ public class AudioBook extends AudioElement {
 	
 	public AudioBook (Element xmlElement) throws Exception {
 		super(xmlElement);
+		File error_file = new File("error.txt");
+		PrintWriter err_handler = new PrintWriter(new FileOutputStream(error_file, true));
+		Date date = new Date();
 		try {
 			this.setLanguage(xmlElement.getElementsByTagName("language").item(0).getTextContent());
 			this.setCategory(xmlElement.getElementsByTagName("category").item(0).getTextContent());
 		} catch (Exception ex) {
-			throw ex;
+			ex.printStackTrace(err_handler);
+			err_handler.println(date.toString());
 		}
+		err_handler.close();
 	}
 	
 	public Language getLanguage() {

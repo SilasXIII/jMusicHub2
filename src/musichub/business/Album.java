@@ -1,6 +1,7 @@
 package musichub.business;
 
 import java.util.*;
+import java.io.*;
 import org.w3c.dom.*;
 import java.text.*;
 
@@ -43,6 +44,9 @@ public class Album {
 	}
 	
 	public Album (Element xmlElement) throws Exception {
+		File error_file = new File("error.txt");
+		PrintWriter err_handler = new PrintWriter(new FileOutputStream(error_file, true));
+		Date date = new Date();
 		try {
 			this.title = xmlElement.getElementsByTagName("title").item(0).getTextContent();
 			this.lengthInSeconds = Integer.parseInt(xmlElement.getElementsByTagName("lengthInSeconds").item(0).getTextContent());
@@ -51,6 +55,8 @@ public class Album {
 				uuid = xmlElement.getElementsByTagName("UUID").item(0).getTextContent();
 			}
 			catch (Exception ex) {
+				ex.printStackTrace(err_handler);
+				err_handler.println(date.toString());
 				System.out.println ("Empty album UUID, will create a new one");
 			}
 			if ((uuid == null)  || (uuid.isEmpty()))
@@ -79,8 +85,10 @@ public class Album {
 				} 
 			}
 		} catch (Exception ex) {
-			throw ex;
+			ex.printStackTrace(err_handler);
+			err_handler.println(date.toString());
 		}
+		err_handler.close();
 	}
 	
 	

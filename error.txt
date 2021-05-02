@@ -1,0 +1,9 @@
+java.io.FileNotFoundException: files\local\mamma_miaa.wav (Le fichier spécifié est introuvable)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:153)
+	at java.desktop/com.sun.media.sound.SunFileReader.getAudioInputStream(SunFileReader.java:117)
+	at java.desktop/javax.sound.sampled.AudioSystem.getAudioInputStream(AudioSystem.java:1062)
+	at musichub.audio_player.Audio.play(Audio.java:23)
+	at musichub.main.Main.main(Main.java:35)
+Sun May 02 17:04:57 CEST 2021
