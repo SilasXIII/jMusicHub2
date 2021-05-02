@@ -2,11 +2,13 @@ package musichub.main;
 import musichub.business.*;
 import musichub.client.*;
 import java.util.*;
+import musichub.audio_player.*;
 
+import java.util.*;
 import java.beans.XMLEncoder;
 import java.io.FileOutputStream;
 import java.io.BufferedOutputStream;
-	
+
 public class Main
 {
  	public static void main (String[] args) {
@@ -22,17 +24,27 @@ public class Main
 			System.out.println("Please boot local server");
 		}
 
+		Audio player = new Audio();
+
 		System.out.println("Type h for available commands");
-		
+
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
-		
+		String path = "files/local/";
+
 		String albumTitle = "null";
-		
-		if (choice.length() == 0) System.exit(0);						
-		
+
+		if (choice.length() == 0) System.exit(0);
+
 		while (choice.charAt(0)!= 'q') 	{
+			System.out.println("Type h for available commands");
 			switch (choice.charAt(0)) 	{
+
+				case 'i':
+					//play musique
+					player.play(path+"mamma_mia.wav");
+					choice = scan.nextLine();
+				break;
 				case 'h':
 					printAvailableCommands();
 					choice = scan.nextLine();
@@ -48,7 +60,7 @@ public class Main
 					//songs of an album, sorted by genre
 					System.out.println("Songs of an album sorted by genre will be displayed; enter the album name, available albums are:");
 					c1.connect("localhost",210,"null");
-					
+
 					albumTitle = scan.nextLine();
 
 					c1.connect("localhost",201,albumTitle);
@@ -87,7 +99,7 @@ public class Main
                     String artist = scan.nextLine();
                     System.out.println ("Song length in seconds: ");
                     int length = Integer.parseInt(scan.nextLine());
-                    System.out.println("Song content: "); 
+                    System.out.println("Song content: ");
                     String content = scan.nextLine();
                     Song s = new Song (title, artist, length, content, genre);
 
@@ -105,7 +117,7 @@ public class Main
                     String aArtist = scan.nextLine();
                     System.out.println ("Album length in seconds: ");
                     int aLength = Integer.parseInt(scan.nextLine());
-                    System.out.println("Album date as YYYY-DD-MM: "); 
+                    System.out.println("Album date as YYYY-DD-MM: ");
                     String aDate = scan.nextLine();
                     Album a = new Album(aTitle, aArtist, aLength, aDate);
 
@@ -145,7 +157,7 @@ public class Main
                     String bArtist = scan.nextLine();
                     System.out.println ("AudioBook length in seconds: ");
                     int bLength = Integer.parseInt(scan.nextLine());
-                    System.out.println("AudioBook content: "); 
+                    System.out.println("AudioBook content: ");
                     String bContent = scan.nextLine();
                     System.out.println("AudioBook language (french, english, italian, spanish, german)");
                     String bLanguage = scan.nextLine();
@@ -164,7 +176,7 @@ public class Main
 					c1.connect("localhost",240,"null");
 
 					System.out.println("Type the name of the playlist you wish to create:");
-					String playListTitle = scan.nextLine();	
+					String playListTitle = scan.nextLine();
 					PlayList pl = new PlayList(playListTitle);
 
 					c1.connect("localhost",500,pl);
@@ -177,7 +189,7 @@ public class Main
 						String elementTitle = scan.nextLine();
 
 						c1.connect("localhost",510,elementTitle,playListTitle);
-                            
+
 						System.out.println("Type y to add a new one, n to end");
 						choice = scan.nextLine();
 					}
@@ -219,16 +231,18 @@ public class Main
 					printAvailableCommands();
 					choice = scan.nextLine();
 				break;
+
 				default:
-				
+
 				break;
 			}
 		}
 		scan.close();
 
 	}
-	
+
 	private static void printAvailableCommands() {
+		System.out.println("i: to listen music");
 		System.out.println("t: display the album titles, ordered by date");
 		System.out.println("g: display songs of an album, ordered by genre");
 		System.out.println("d: display songs of an album");
