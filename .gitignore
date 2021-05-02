@@ -21,3 +21,9 @@
 
 #intelliJ IDE files
 .idea
+
+#maven
+*.properties
+*.lst
+
+*.txt
