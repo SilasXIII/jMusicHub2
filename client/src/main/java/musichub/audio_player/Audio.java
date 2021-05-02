@@ -4,6 +4,12 @@ import javax.sound.sampled.*;
 import java.io.*;
 import java.util.*;
 
+/**
+ * This function is used to listen to music
+ * @param path to the .wav file
+ * @author Pierre-Louis
+ * */
+
 public class Audio{
 
     public Audio(){}
