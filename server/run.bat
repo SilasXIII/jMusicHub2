@@ -1,1 +1,1 @@
-java -cp server-1.0.0.jar ServerConnection
+java -jar target\server-1.0.0.jar

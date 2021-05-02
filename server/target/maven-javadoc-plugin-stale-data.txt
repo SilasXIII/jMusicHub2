@@ -1,0 +1,29 @@
+cmd.exe
+/X
+/C
+""C:\Program Files\Java\jdk1.8.0_221\jre\..\bin\javadoc.exe" @options @argfile"
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\AbstractServer.html = 1619961871280
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\allclasses-frame.html = 1619961871542
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\allclasses-noframe.html = 1619961871550
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\argfile = 1619961870623
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\ClientConnection.html = 1619961871290
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\constant-values.html = 1619961871451
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\deprecated-list.html = 1619961871542
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\FirstServer.html = 1619961871308
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\index-all.html = 1619961871540
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\index.html = 1619961871552
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\options = 1619961870623
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\overview-frame.html = 1619961871411
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\overview-summary.html = 1619961871552
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\overview-tree.html = 1619961871522
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\package-frame.html = 1619961871421
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\package-list = 1619961871411
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\package-summary.html = 1619961871431
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\package-tree.html = 1619961871431
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\package-use.html = 1619961871512
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\script.js = 1619961871552
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\serialized-form.html = 1619961871461
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\ServerConnection.html = 1619961871320
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\ServerThread.html = 1619961871380
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\SimpleClient.html = 1619961871391
+D:\oop projetc\jMusicHub2\server\target\site\apidocs\stylesheet.css = 1619961450984

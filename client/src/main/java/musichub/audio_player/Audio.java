@@ -4,6 +4,10 @@ import javax.sound.sampled.*;
 import java.io.*;
 import java.util.*;
 
+/**
+ * this class allows playing audio (.wav) files
+ * @author Pierre Louis 
+ */
 public class Audio{
 
     public Audio(){}
