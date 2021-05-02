@@ -2,7 +2,7 @@ package musichub.client;
 
 import java.io.*;
 import java.net.*;
-
+import musichub.business.*;
 
 public class SimpleClient {
 	
@@ -10,7 +10,7 @@ public class SimpleClient {
 	private ObjectInputStream input;
 	private Socket socket;
 	
-	public void connect(String ip)
+	public void connect(String ip, int query, Object ... obj)
 	{
 		int port = 6666;
         try  {
@@ -20,13 +20,23 @@ public class SimpleClient {
 			//create the streams that will handle the objects coming and going through the sockets
 			output = new ObjectOutputStream(socket.getOutputStream());
             input = new ObjectInputStream(socket.getInputStream());
-			
-			String textToSend = new String("send me albums!");
-			System.out.println("text sent to the server: " + textToSend);			
-			output.writeObject(textToSend);		//serialize and write the String to the stream
 
-			String albums = (String) input.readObject();	//deserialize and read the Student object from the stream
-			System.out.println(albums);
+            //sends the query
+			output.writeObject(query);
+
+			//receive string output from the server
+			String response = (String) input.readObject();
+
+			int i = 0;
+
+			while(response.equals("obj_req")) {
+				output.writeObject(obj[i]);
+				response = (String) input.readObject();
+				i++;
+			}
+
+			System.out.println(response);
+
 	    } catch  (UnknownHostException uhe) {
 			uhe.printStackTrace();
 		}
@@ -46,4 +56,5 @@ public class SimpleClient {
 			}
 		}
 	}
+
 }

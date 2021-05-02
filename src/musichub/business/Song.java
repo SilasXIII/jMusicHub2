@@ -28,7 +28,6 @@ public class Song extends AudioElement {
 	public void setGenre (String genre) {	
 		switch (genre.toLowerCase()) {
 			case "jazz":
-			default:
 				this.genre = Genre.JAZZ;
 				break;
 			case "classic":
@@ -45,7 +44,9 @@ public class Song extends AudioElement {
 				break;
 			case "rap":
 				this.genre = Genre.RAP;
-				break;				
+				break;
+			default:
+				break;
 		}
 	} 
 

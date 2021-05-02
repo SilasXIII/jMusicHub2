@@ -1,7 +1,8 @@
 package musichub.server;
 
 import java.io.*;  
-import java.net.*; 
+import java.net.*;
+import musichub.business.*;
 
 public class FirstServer extends AbstractServer
 {
@@ -11,13 +12,14 @@ public class FirstServer extends AbstractServer
 	public void connect(String ip) {
 		try {
 			//the server socket is defined only by a port (its IP is localhost)
-			ss = new ServerSocket (6666);  
+			ss = new ServerSocket (6666);
+			MusicHub theHub = new MusicHub ();
 			System.out.println("Server waiting for connection...");
 			while (true) {
 				Socket socket = ss.accept();//establishes connection 
-				System.out.println("Connected as " + ip);	
+				//System.out.println("Connected as " + ip);
 				// create a new thread to handle client socket	
-				new ServerThread(socket).start();				
+				new ServerThread(socket,theHub).start();
 			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace();

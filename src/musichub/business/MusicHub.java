@@ -31,9 +31,9 @@ public class MusicHub {
 	private List<AudioElement> elements;
 	
 	public static final String DIR = System.getProperty("user.dir");
-	public static final String ALBUMS_FILE_PATH = DIR + "\\files\\albums.xml";
-	public static final String PLAYLISTS_FILE_PATH = DIR + "\\files\\playlists.xml";
-	public static final String ELEMENTS_FILE_PATH = DIR + "\\files\\elements.xml";
+	public static final String ALBUMS_FILE_PATH = DIR + "\\files\\server\\albums.xml";
+	public static final String PLAYLISTS_FILE_PATH = DIR + "\\files\\server\\playlists.xml";
+	public static final String ELEMENTS_FILE_PATH = DIR + "\\files\\server\\elements.xml";
 	
 	private XMLHandler xmlHandler = new XMLHandler();
 	
@@ -102,8 +102,30 @@ public class MusicHub {
 					audioBookList.add(ae);
 		Collections.sort(audioBookList, new SortByAuthor());
 		for (AudioElement ab : audioBookList)
-			titleList.append(ab.getArtist()+ "\n");
+			titleList.append(ab.getTitle()+ "\n");
 		return titleList.toString();
+	}
+
+	public String getAllSongs() {
+		StringBuffer titleList = new StringBuffer();
+		List<AudioElement> songList = new ArrayList<AudioElement>();
+		for (AudioElement s : elements)
+			if (s instanceof Song)
+				songList.add(s);
+		for (AudioElement se : songList)
+			titleList.append(se.getTitle() + "\n");
+		return titleList.toString();
+	}
+
+	public String getAllAudioElements() {
+		return getAllSongs() + getAudiobooksTitlesSortedByAuthor();
+	}
+
+	public String getAllPlaylists() {
+		StringBuffer playlistTitleList = new StringBuffer();
+		for (PlayList p : playlists)
+			playlistTitleList.append(p.getTitle() + "\n");
+		return playlistTitleList.toString();
 	}
 
 	public List<AudioElement> getAlbumSongs (String albumTitle) throws NoAlbumFoundException {
