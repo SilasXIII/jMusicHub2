@@ -13,7 +13,7 @@ public class Main
 {
  	public static void main (String[] args) throws Exception{
 
-		String filepath = "files/local/";
+		String filepath = "../files/local/";
 
 
 		System.out.println("Starting MusicHub... Attempting to connect to local server");
@@ -31,7 +31,6 @@ public class Main
 
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
-		String path = "files/local/";
 
 		String albumTitle = "null";
 
