@@ -7,8 +7,10 @@ import java.util.*;
 
  
 /**
- * This thread is responsible to handle client connection.
+ * This thread is responsible to handle client connection and send information back to the client
+ * @author Alexandre Meyer
  */
+
 public class ServerThread extends Thread {
     private Socket socket;
 	private ObjectInputStream input;
@@ -149,6 +151,12 @@ public class ServerThread extends Thread {
 					theHub.saveAlbums();
 					theHub.savePlayLists();
 					output.writeObject("Elements, albums and playlists saved!");
+					break;
+				case 701:
+					//outputs the filename of a given song
+					output.writeObject("obj_req");
+					String songTitle_701 = (String) input.readObject();
+					output.writeObject(theHub.getSongFilename(songTitle_701));
 					break;
 				default:
 					System.out.println("Not a valid query...");

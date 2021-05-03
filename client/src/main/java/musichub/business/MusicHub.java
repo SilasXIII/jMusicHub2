@@ -123,6 +123,15 @@ public class MusicHub {
 			playlistTitleList.append(p.getTitle() + "\n");
 		return playlistTitleList.toString();
 	}
+	
+	public String getSongFilename(String songTitle) {
+		for (AudioElement s : elements) {
+			if (s.getTitle().equals(songTitle)) {
+				return s.getContent();
+			}
+		}
+		return "null";
+	}
 
 	public List<AudioElement> getAlbumSongs (String albumTitle) throws NoAlbumFoundException {
 		Album theAlbum = null;

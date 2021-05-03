@@ -4,15 +4,24 @@ import java.io.*;
 import java.net.*;
 import musichub.business.*;
 
+
 public class SimpleClient {
 	
 	private ObjectOutputStream output;
 	private ObjectInputStream input;
 	private Socket socket;
-	
-	public void connect(String ip, int query, Object ... obj)
+
+	/**
+	 * This function is used to connect to and query the server.
+	 * @param String ip, int query, varags Object obj
+	 * @return returns servers response in form of a string
+	 * @author Alexandre Meyer
+	 * */
+
+	public String connect(String ip, int query, Object ... obj)
 	{
 		int port = 6666;
+		String response = "null";
         try  {
 			//create the socket; it is defined by an remote IP address (the address of the server) and a port number
 			socket = new Socket(ip, port);
@@ -25,7 +34,7 @@ public class SimpleClient {
 			output.writeObject(query);
 
 			//receive string output from the server
-			String response = (String) input.readObject();
+			response = (String) input.readObject();
 
 			int i = 0;
 
@@ -55,6 +64,7 @@ public class SimpleClient {
 				ioe.printStackTrace();
 			}
 		}
+		return response;
 	}
 
 }
