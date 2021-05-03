@@ -12,8 +12,8 @@ public class SimpleClient {
 	private Socket socket;
 
 	/**
-	 * This function is used to connect to and query the server.
-	 * @param String ip, int query, varags Object obj
+	 * This function is used to connect and query the server.
+	 * 
 	 * @return returns servers response in form of a string
 	 * @author Alexandre Meyer
 	 * */

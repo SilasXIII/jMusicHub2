@@ -5,8 +5,10 @@ import java.io.*;
 import java.util.*;
 
 /**
- * This function is used to listen to music
- * @param filepath
+ * This function is used to listen to music.
+ * Behind the interface the function manage the audio input stream with the help of the javax.sound.sampled.* libraries
+ * Those  streams are .wav files.
+ * All the errors are sent in the error.txt file in client/src
  * @author Pierre-Louis
  * */
 
