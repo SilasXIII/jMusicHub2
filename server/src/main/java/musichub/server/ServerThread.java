@@ -150,6 +150,12 @@ public class ServerThread extends Thread {
 					theHub.savePlayLists();
 					output.writeObject("Elements, albums and playlists saved!");
 					break;
+				case 701:
+					//outputs the filename of a given song
+					output.writeObject("obj_req");
+					String songTitle_701 = (String) input.readObject();
+					output.writeObject(theHub.getSongFilename(songTitle_701));
+					break;
 				default:
 					System.out.println("Not a valid query...");
 					output.writeObject("Not a valid query...");

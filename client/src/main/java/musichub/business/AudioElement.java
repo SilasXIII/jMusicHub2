@@ -69,6 +69,10 @@ public abstract class AudioElement implements Serializable {
 	public String getTitle() {
 		return this.title;
 	}
+
+	public String getContent() {
+		return this.content;
+	}
 	
 	public String toString() {
 		return "Title = " + this.title + ", Artist = " + this.artist + ", Length = " + this.lengthInSeconds + ", Content = " + this.content;

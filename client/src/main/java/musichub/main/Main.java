@@ -40,8 +40,18 @@ public class Main
 			System.out.println("Type h for available commands");
 			switch (choice.charAt(0)) 	{
 				case 'i':
-					//play musique
-					player.play(filepath+"mamma_mia.wav");
+					//play 1 song
+					System.out.println("Choose a song to play, list of available songs :");
+
+					c1.connect("localhost",220,"null");
+
+					String songToPlay = scan.nextLine();
+
+					String songContent = c1.connect("localhost",701,songToPlay);
+					
+					player.play(filepath+songContent);
+
+					printAvailableCommands();
 					choice = scan.nextLine();
 				break;
 				case 'h':
@@ -50,7 +60,6 @@ public class Main
 				break;
 				case 't':
 					//album titles, ordered by date
-					//System.out.println(theHub.getAlbumsTitlesSortedByDate());
 					c1.connect("localhost",210,"null");
 					printAvailableCommands();
 					choice = scan.nextLine();
