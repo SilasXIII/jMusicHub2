@@ -13,8 +13,7 @@ mvn compile
 mvn package 
 then
 * server : java -jar server\target\server-1.0.0.jar
-* client : cd client
-           run
+* client : cd client, then run
 
 ## gen doc
 mvn javadoc:javadoc
