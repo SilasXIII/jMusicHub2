@@ -7,8 +7,10 @@ import java.util.*;
 
  
 /**
- * This thread is responsible to handle client connection.
+ * This thread is responsible to handle client connection and send information back to the client
+ * @author Alexandre Meyer
  */
+
 public class ServerThread extends Thread {
     private Socket socket;
 	private ObjectInputStream input;

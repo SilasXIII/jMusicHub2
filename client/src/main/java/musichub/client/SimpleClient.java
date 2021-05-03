@@ -4,12 +4,20 @@ import java.io.*;
 import java.net.*;
 import musichub.business.*;
 
+
 public class SimpleClient {
 	
 	private ObjectOutputStream output;
 	private ObjectInputStream input;
 	private Socket socket;
-	
+
+	/**
+	 * This function is used to connect to and query the server.
+	 * @param String ip, int query, varags Object obj
+	 * @return returns servers response in form of a string
+	 * @author Alexandre Meyer
+	 * */
+
 	public String connect(String ip, int query, Object ... obj)
 	{
 		int port = 6666;

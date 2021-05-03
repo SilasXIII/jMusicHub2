@@ -48,12 +48,20 @@ public class Main
 					String songToPlay = scan.nextLine();
 
 					String songContent = c1.connect("localhost",701,songToPlay);
-					
+
 					player.play(filepath+songContent);
 
 					printAvailableCommands();
 					choice = scan.nextLine();
 				break;
+				case 'f':
+					//play all the songs of an album
+					//no queue structure to support this functionality yet
+					//System.out.println("Choose an album to play, list of available albums :");
+					c1.connect("localhost",210,"null");
+
+
+					break;
 				case 'h':
 					printAvailableCommands();
 					choice = scan.nextLine();
