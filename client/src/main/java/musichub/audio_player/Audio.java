@@ -39,11 +39,11 @@ public class Audio{
                         clip.stop();
                         choice = scan.nextLine();
                     break;
-                    case("c"):
+                    case("r"):
                         clip.setMicrosecondPosition(0);
                         choice = scan.nextLine();
                     break;
-                    case("e"):
+                    case("c"):
                         clip.close();
                         choice = scan.nextLine();
                     break;
