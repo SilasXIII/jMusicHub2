@@ -179,6 +179,36 @@ Audio()
 play()
 }
 
+class SimpleClient{
+    ObjectOutputStream output
+    ObjectInputStream input
+    Socket socket
+    connect(String, int, Object)
+}
+
+class AbstractServer{
+    connect(String)
+}
+
+class FirstServer extends AbstractServer{
+    String ip
+    ServerSocket ss
+    connect(String)
+}
+
+class ServerConnection{
+    main(string)
+}
+
+class ServerThread extends Thread{
+    Socket socket
+    ObjectInputStream input
+    ObjectOutputStream output
+    MusicHub theHub
+    ServerThread(Socket, MusicHub)
+    run()
+}
+
 Main<|--MusicHub
 
 MusicHub<|-- Album
@@ -209,6 +239,11 @@ PlayList<|-- XMLHandler
 Song<|-- XMLHandler
 
 Main <|-- Audio
+
+SimpleClient <|-- ServerThread
+ServerThread <|-- SimpleClient
+ServerConnection <|-- FirstServer
+FirstServer <|-- ServerThread
 
 
 @enduml
