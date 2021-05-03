@@ -1,0 +1,249 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Album{
+ String title
+ String artist
+ int lengthInSeconds
+ UUID uuid
+ Date date
+ ArrayList<UUID> songsUIDs
+ Album(String, String, int, String, String ArrayList<UUID>)
+ Album(String, String, int, String)
+ Album throws Exception(Element)
+ addSong(UUID)
+ List<UUID> getSongs()
+ ArrayList<UUID> getSongsRandomly()
+ String getTitle()
+ Date getDate()
+ createXMLElement(Document, Element)
+}
+class AudioBook extends AudioElement{
+Language language
+Category category
+AudioBook(String, String, int, String, String, String, String)
+AudioBook(String, String, int, String, String, String)
+AudioBook(Element) throws Exception
+Language getLanguage()
+Category getCategory()
+setLanguage(String)
+setCategory(String)
+String toString()
+createXMLElement(Document, Element)
+}
+
+class AudioElement{
+String titleString artist
+int lengthInSeconds
+UUID uuid
+String content
+AudioElement(String, String, int, String, String)
+AudioElement(String, String, int, String)
+AudioElement(Element) throws Exception
+UUID getUUID()
+String getArtist()
+String getTitle()
+String toString()
+createXMLElement(Document, Element)
+}
+
+enum Category{
+YOUTH
+NOVEL
+THEATER
+DOCUMENTARY
+SPEECH
+String category
+Category(String)
+String getCategory()
+}
+
+enum Genre{
+JAZZ
+CLASSIC
+HIPHOP
+ROCK
+POP
+RAP
+String genre
+Genre(String)
+String getGenre()
+}
+
+enum Language{
+FRENCH
+ENGLISH
+ITALIAN
+SPANISH
+GERMAN
+String language
+Language(String)
+String getLanguage()
+}
+
+class SortByDate implements Comparator{
+int compare(Album, Album)
+}
+
+class SortByGenre implements Comparator{
+int compare(Song, Song)
+}
+
+class SortByAuthor implements Comparator{
+int compare(AudioElement, AudioElement)
+}
+
+class MusicHub{
+List<Album> albums
+List<PlayList> playlists
+List<AudioElement> elements
+String DIR
+String ALBUMS_FILE_PATH
+String PLAYLISTS_FILE_PATH
+String ELEMENTS_FILE_PATH
+XMLHandler xmlHandler
+MusicHub()
+addElement(AudioElement)
+addAlbum(Album)
+addPlayList(PlayList)
+deletePlayList(String)
+Iterator<Album> albums()
+Iterator<PlayList> playlists()
+Iterator<AudioElement> elements()
+String getAlbumTitlesSortedByDate()
+String getAudiobooksTitlesSortedByAuthor()
+String getAudiobooksTitlesSortedByAuthor()
+List<AudioElement> getAlbumSongs(String) throws NoAlbumFoundException
+List<Song> getAlbumSongsSortedByGenre (String) throws NoAlbumFoundException
+addElementToAlbum(String, String) throws NoAlbumFoundException, NoElementFoundException
+addElementToPlayList(String, String) throws NoPlayListFoundException, NoElementFoundException
+loadAlbums()
+loadPlaylists()
+loadElements()
+saveAlbums()
+savePlaylists()
+saveElements()
+}
+
+class NoAlbumFoundException extends Exception{
+NoAlbumFoundException(String)
+}
+
+class NoElementFoundException extends Exception{
+NoElementFoundException(String)
+}
+
+class NoPlayListFoundException extends Exception{
+NoPlayListFoundException(String)
+}
+
+class PlayList{
+String title
+UUID uuid
+ArrayList<UUID> elementUUIDs
+PlayList(String, String, ArrayList<UUID>)
+PlayList(String)
+addElement(UUID)
+ArrayList<UUID> getElements()
+String getTitle()
+PlayList getTitle()
+Playlist(Element) throws Exception
+createXMLElement(Document, Element)
+}
+
+class Song extends AudioElement{
+Genre genre
+Song(String, String, int, String, String, String)
+Song(String, String, int, String, String)
+Song(Element) throws Exception
+setGenre(String)
+String getGenre()
+String toString()
+createXMLElement(Document, Element)
+}
+
+class Main{
+main(String)
+printAvailableCommands()
+}
+
+class XMLHandler{
+XMLHandler()
+createXMLDocument(Document, String)
+Document createXMLDocument()
+NodeList parseXMLFile(String)
+}
+
+class Audio{
+Audio()
+play()
+}
+
+class SimpleClient{
+    ObjectOutputStream output
+    ObjectInputStream input
+    Socket socket
+    connect(String, int, Object)
+}
+
+class AbstractServer{
+    connect(String)
+}
+
+class FirstServer extends AbstractServer{
+    String ip
+    ServerSocket ss
+    connect(String)
+}
+
+class ServerConnection{
+    main(string)
+}
+
+class ServerThread extends Thread{
+    Socket socket
+    ObjectInputStream input
+    ObjectOutputStream output
+    MusicHub theHub
+    ServerThread(Socket, MusicHub)
+    run()
+}
+
+Main<|--MusicHub
+
+MusicHub<|-- Album
+MusicHub<|-- PlayList
+MusicHub<|-- AudioElement
+
+Main<|-NoAlbumFoundException
+Main<|-NoElementFoundException
+Main<|-NoPlayListFoundException
+
+MusicHub<|--NoAlbumFoundException
+MusicHub<|--NoElementFoundException
+MusicHub<|--NoPlayListFoundException
+
+AudioBook<|-- Language
+AudioBook<|-- Category
+Song<|-- Genre
+
+MusicHub<|-- SortByAuthor
+MusicHub<|-- SortByDate
+MusicHub<|-- SortByGenre
+
+MusicHub<|-- XMLHandler
+Album<|-- XMLHandler
+AudioBook<|-- XMLHandler
+AudioElement<|-- XMLHandler
+PlayList<|-- XMLHandler
+Song<|-- XMLHandler
+
+Main <|-- Audio
+
+SimpleClient <|-- ServerThread
+ServerThread <|-- SimpleClient
+ServerConnection <|-- FirstServer
+FirstServer <|-- ServerThread
+
+
+@enduml

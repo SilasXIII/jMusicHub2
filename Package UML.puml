@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+
+package "client_p" {
+    folder "src_c"{
+        folder "main_fc"{
+            folder "java_c"{
+                folder "musichub_c"{
+                    package "audio_player_c"
+                    package "business_c"
+                    package "client_c"
+                    package "main_c"
+                    package "util_c"
+                }
+            }
+        }
+    }
+    folder "target_c"{
+        folder "classes_c"{
+            folder "musichub_tc"
+        }
+        folder "generated-sources_c"
+        folder "javadoc-bundle-options_c"
+        folder "maven-archiver_c"
+        folder "maven-status_c"
+    }
+}
+
+package "server_p" {
+    folder "src_s"{
+        folder "main_fs"{
+            folder "java_s"{
+                folder "musichub_s"{
+                    package "business_s"
+                    package "server_s"
+                    package "util_s"
+                }
+            }
+        }
+    }
+    folder "target_s"{
+        folder "classes_s"{
+            folder "musichub_ts"
+        }
+        folder "generated-sources_s"
+        folder "javadoc-bundle-options_s"
+        folder "maven-archiver_s"
+        folder "maven-status_s"
+
+    }
+}
+
+package "files"{
+    folder "local"
+    folder "server_f"
+}
+
+@enduml
